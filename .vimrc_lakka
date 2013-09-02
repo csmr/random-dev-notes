@@ -1,0 +1,37 @@
+" file settings
+set backup
+set writebackup
+set backupdir=~  " backup files dir
+set directory=~  " swap file dir
+
+" timestamp-extension to backups
+au BufWritePre * let &bex = '-' . strftime("%Y%m%d%H%M") . '.backup'
+
+" folding
+filetype plugin indent on 
+set foldmethod=indent " fold by indentation
+
+" look-and-feel
+" chdir ~ " go home
+
+set ls=2 " always status line
+colorscheme murphy " def colors
+
+"set guifont=* " font selector on startup
+set guifont=Droid:h11
+set guioptions-=m
+set guioptions-=T " hide toolbar, menubar and use text-tabs
+set guioptions-=e
+set shiftwidth=2 softtabstop=2
+set expandtab
+set backspace=2 " backspace to del prev in insert mode
+
+" syntax formatting
+syntax on
+set number " line numbers
+
+" abbreviations
+" source ~/.vimabbrev
+
+" key mappings
+imap jkk <esc>
