@@ -14,7 +14,7 @@ https://github.com/phusion/passenger/wiki/Node.js
   - apt-get installing libz etc
   - let passenger -installer install nginx
 * 2328 installer and some phusion blog reading done (use bcrypt!)
-reading discussion forums on a finnish mc losing his nerve in facebook comments
+* ? reading discussion forums on a finnish mc losing his nerve in facebook comments
 * 2345 continue
 * Find out I have downloaded the non-node supporting version
 * 2352 Start over, remove stuffs, - ´´´$ git clone https://github.com/phusion/passenger.git
