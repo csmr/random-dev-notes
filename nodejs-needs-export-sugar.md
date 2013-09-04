@@ -15,16 +15,39 @@ You should be able to define variables and functions as normal, and then export 
 
 1. access the arguments -object and generate an object like:
 
-``´javascript
+```javascript
   { funcName: funcName,
     variName: variName,
     etCetera: etCetera
   }
-  
+```
+
+  - problems: when passing values to function as arguments, variables are expressions
+  - iow the arg object ends up with the value, not variable reference
+  - Simplest solution is to use an array of strings (at least for vars)
+
 2. bind this object to module.exports dynamically
 
 ```javascript
   function bindObjToThisExport( obj ) { 
     this.exports = ob;
   };
+  
   bindObjectToThis.apply( module, theRefsObject )
+```
+
+Solution model
+```javascript
+function exportsToContext() {
+var alen = arguments
+for (var a = 0; a < alen; a++) {
+this.exports[el] = arguments[a]);
+});
+}
+ 
+var foo = 1, bar = 2, zoo = function() { return "z" };
+ 
+function export( argArr ) {
+exportsToContext.apply( module, [this].join( argArr) );
+}
+```
