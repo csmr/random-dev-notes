@@ -15,32 +15,36 @@ aka _succinct guide handling clients as known users with Node.js, Express and Pa
   - same as `$ node install -S express passport passport-local passport-strategyNameHere`
 
 ### Sessions with passport
+
 - To use passport with express, conf modules in this order:
+
 ```javascript
-  app.configure( function() {
-  
-    ...
-    express.session({ secret: 'raBoof' })
-    passport.initialize()
-    passport.session()
-    ...
-  });
-```
+app.configure( function() {
+
+  ...
+  express.session({ secret: 'raBoof' })
+  passport.initialize()
+  passport.session()
+  ...
+});
+
+````
 
 #### Strategies
 - Strategies must be installed, required and configured.
 - f.ex. `require('passport-local')`
 - Strategy config should implement a verify callback.
 - A verify callback should check for valid credentials, then invoke done accordingly.
+
 ```javascript
-    passport.use(new LocalStrategy( 
-      function( usern, pw, done ) ) {
-        // handle server exeptions, return done(err)
-        // handle auth fails, return done(null, false, { message: 'Bad username.'})
-        // if succ
-        return done(null, user)
-      }
+  passport.use(new LocalStrategy( 
+    function( usern, pw, done ) ) {
+      // handle server exeptions, return done(err)
+      // handle auth fails, return done(null, false, { message: 'Bad username.'})
+      // if succ
+      return done(null, user)
     }
+  }
 ```
 
 #### Authentication
@@ -70,37 +74,44 @@ aka _succinct guide handling clients as known users with Node.js, Express and Pa
 - First get authorization details from your provider: f.ex. authorization & access token -urls, plus client ID & secret.
 
 1. Implement strategy
-- Require the strategy module, and implement a new strategy with `new OAuth2Strategy( argObj, verifyFunc )`.
-- verify -callbacks `refreshToken` argument may be undefined, `profile` contains the user profile data from provider.
+  - Require the strategy module, and implement a new strategy with `new OAuth2Strategy( argObj, verifyFunc )`.
+  - verify -callbacks `refreshToken` argument may be undefined, `profile` contains the user profile data from provider.
+
 ```javascript
   ...
-  var passport = require('passport'), OAuth2Stg = require('passport-oauth').OAuth2Strategy,
+  var passport = require('passport'), 
+  
+  OAuth2Stg = require('passport-oauth').OAuth2Strategy,
+  
   stgArgs = { 
-    authorizationURL: 'https://www.provider.com/oauth2/authorize',
-    tokenURL: 'https://www.provider.com/oauth2/token',
-    clientID: '123-456-789',
-    clientSecret: 'shhh-its-a-secret',
-    callbackURL: 'https://www.example.com/auth/provider/callback'
+      authorizationURL: 'https://www.provider.com/oauth2/authorize',
+      tokenURL: 'https://www.provider.com/oauth2/token',
+      clientID: '123-456-789',
+      clientSecret: 'shhh-its-a-secret',
+      callbackURL: 'https://www.example.com/auth/provider/callback'
   },
+  
   verifyFunc = function( accessToken, refreshTokent, profile, done ) {
-    User.findOrCreate( ... , function(err, user) {
-      done(err, user)
-    });
+      User.findOrCreate( ... , function(err, user) {
+        done(err, user)
+      });
   }
-  
+
   passport.use( 'provider', new OAuth2Strategy( argObj, verifyFunc ) )
-  
-  ...
+
 ```
 
 2. Set up routes
-- passport OAuth2 requires 2 routes: providers authentication url and the return url for the app.
-- _Scope_ of the access to provider can be provided with arg obj property `scope`. See provider Api doc.
-- Multiple scopes as arr: `scope: ['email','photo']`
+  - passport OAuth2 requires 2 routes: providers authentication url and the return url for the app.
+  - _Scope_ of the access to provider can be provided with arg obj property `scope`. See provider Api doc.
+  - Multiple scopes as arr: `scope: ['email','photo']`
+
 ```javascript
-app.get( '/auth/provider', passport.authenticate('provider', { scope: 'email' }) ) 
-app.get( '/auth/provider/callback', passport.authenticate('', { successRedirect: '/app', failureRedirect: '/login' } ) )
+    
+    app.get( '/auth/provider', passport.authenticate('provider', { scope: 'email' }) ) 
+    app.get( '/auth/provider/returm', passport.authenticate('', { successRedirect: '/app', failureRedirect: '/log' }) )
 
 ```
 
-3. Add a link to a page: `<a href="/auth/provider">Log In with OAuth 2.0 Provider</a>`
+3. Add a link to a page: 
+  - `<a href="/auth/provider">Log In with OAuth 2.0 Provider</a>`
