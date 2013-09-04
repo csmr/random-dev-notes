@@ -9,7 +9,9 @@ Actually, I dont give a fulcrum if you are, I am fed up with this crap!
 You should be able to define variables and functions as normal, and then export them to the module.exports with simple call:
 
 ´´´javascript
+  // simply one call 
   export( funcName, variName, etCetera )
+  // declare funcName -function, var variName etc below...
 ```
 
 
