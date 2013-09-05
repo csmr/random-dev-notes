@@ -54,7 +54,7 @@ app.configure( function() {
 - Arg object `obj` can specify _redirects_, _session_ and _flash messages_.
 - Redirects specified in obj properties `successRedirect` and `failureRedirect`.
 - Sessions can be disabled by setting bool _session_ to false.
-- Flash messages require _connect-flash_ middleware in express 3.x.
+- Flash messages require `connect-flash` middleware in express 3.x.
 - Flash messages with obj properties `successFlash` and `failureFlash`, boolean or string for msg.
 - Custom callback function takes args `err`, `user`, `info`. With custom callback session setup and redirects are not automagic.
 * Fail
@@ -114,4 +114,10 @@ app.configure( function() {
 ```
 
 3. Add a link to a page: 
-  - `<a href="/auth/provider">Log In with OAuth 2.0 Provider</a>`
+
+```html
+
+<a href="/auth/provider">Log In with OAuth 2.0 Provider</a>
+
+```
+
