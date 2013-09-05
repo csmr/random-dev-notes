@@ -43,30 +43,40 @@ app.get( "/select", function( req, res ) {
     })    
 })
 
-
+// redirect
 app.get( "/newDirection", function( req, res ) {
     res.status( 302 ).redirect( "/home" ) // statuscode, new url
 }
 
-// couchdb
 
-// cradle
+/*** CouchDB ***/
 
+// get Cradle
+npm install -S cradle
 cradle = require('cradle')
 
 // 0. config conn
-cradle.setup( )
+cradle.setup( configObj )
 
-// 1. open conn
+// 1. open server conn
 var conn = new( cradle.Connection )
+var serverReport = { 
+    info: conn.info(),
+    stats: conn.stats(),
+    databases: conn.databases(),
+    lastConfig: conn.config()
+}
 
 // 2. create db
-var db = c.database('sumBase')
+var db = conn.database('sumBase')
 db.exists( function( err, exists ) { 
     if ( !err && !exists ) db.create() 
 }
 
 // 3. use db 
+db.info()
+db.all() // dumps the contents of databas
+
 // operations 
 //  - in couch- get/put/post/delete
 //  - in cradle-  get/save/view/delete
@@ -76,5 +86,5 @@ db.save( 'another/pathTo/oneDoc', docObjRef )
 db.delete( 'docN', docRevision, respHandlerFunc )
 db.merge( 'theDocument', { someField: "newValue" }, handlFunc ) // update single field value
 
-
+// erase database
 db.destroy()
