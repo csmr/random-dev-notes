@@ -50,3 +50,31 @@ app.get( "/newDirection", function( req, res ) {
 
 // couchdb
 
+// cradle
+
+cradle = require('cradle')
+
+// 0. config conn
+cradle.setup( )
+
+// 1. open conn
+var conn = new( cradle.Connection )
+
+// 2. create db
+var db = c.database('sumBase')
+db.exists( function( err, exists ) { 
+    if ( !err && !exists ) db.create() 
+}
+
+// 3. use db 
+// operations 
+//  - in couch- get/put/post/delete
+//  - in cradle-  get/save/view/delete
+db.get( 'documentNameFoo', handlerFunc ) 
+db.view( 'sum/pathTo/aDoc', iteratorFunc )
+db.save( 'another/pathTo/oneDoc', docObjRef )
+db.delete( 'docN', docRevision, respHandlerFunc )
+db.merge( 'theDocument', { someField: "newValue" }, handlFunc ) // update single field value
+
+
+db.destroy()
