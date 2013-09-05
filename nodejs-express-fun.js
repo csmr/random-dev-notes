@@ -12,6 +12,9 @@ app.get( '/showPlace/:place?', function( req, res ) {
 // request-object
 // source https://github.com/visionmedia/express/blob/master/lib/request.js
 
+// request parameters
+req.query.parFoo // http://www.ufo.fi?parFoo=1
+
 // req.get - any header value gotten
 req.get('user-agent') 
 req.get('')
