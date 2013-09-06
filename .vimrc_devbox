@@ -20,7 +20,7 @@ set guifont=Droid:h11
 set guioptions-=m                                                                                                  
 set guioptions-=T " hide toolbar, menubar and use text-tabs                                                        
 set guioptions-=e                                                                                                  
-set shiftwidth=2 softtabstop=2                                                                                     
+set tabstop=2 shiftwidth=2 softtabstop=2                                                                                     
 set expandtab                                                                                                      
 set backspace=2 " backspace to del prev in insert mode                                                             
                                                                                                                    
