@@ -1,6 +1,6 @@
 SoMe-auth and Sessions
 ======================
-aka _succinct guide handling clients as known users with Node.js, Express and Passport_
+aka _succinct guide handling clients as known users with node.js, express.js and passport.js_
 
 ### What, passport?
 
@@ -8,10 +8,11 @@ aka _succinct guide handling clients as known users with Node.js, Express and Pa
 - for each application unique authentication strategies.
 - prerequisites:
   - node.js & npm, app scaffold.
-  - add to your package.json
-    - express
-    - passport
-    - passport-strategyNameHere
+  - add to your package.json:
+        - express
+        - passport
+        - passport-strategyNameHere
+
   - same as `$ node install -S express passport passport-local passport-strategyNameHere`
 
 ### Sessions with passport
@@ -32,13 +33,15 @@ app.configure( function() {
 
 #### Strategies
 - Strategies must be installed, required and configured.
-- f.ex. `require('passport-local')`
 - Strategy config should implement a verify callback.
 - A verify callback should check for valid credentials, then invoke done accordingly.
 
 ```javascript
-  passport.use(new LocalStrategy( 
-    function( usern, pw, done ) ) {
+  require('passport-local')
+  
+  // example strategy config
+  passport.use( new LocalStrategy( 
+    function( username, pw, done ) ) {
       // handle server exeptions, return done(err)
       // handle auth fails, return done(null, false, { message: 'Bad username.'})
       // if succ
