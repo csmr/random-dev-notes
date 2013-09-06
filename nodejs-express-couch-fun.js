@@ -30,7 +30,8 @@ req.acceptLanguage
 // res.attachment | .cookies | .clearCookies | .download | .links |  .sendfile
 // json response
 app.get( "/rawjsobj", function( req, res ) {
-    res.json( { fooBar: 0, content: "message" } )    
+    res.json( { fooBar: 0, content: "message" } )
+    res.cookie( "aCookye", "Some Content", { expires: new Date(Date.now() + 900000), domain: 'what.com' } )
 })
 
 // Optional content type
