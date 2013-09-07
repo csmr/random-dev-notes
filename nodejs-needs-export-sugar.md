@@ -43,18 +43,18 @@ You should be able to define variables and functions as normal, and then export 
   bindObjectToThis.apply( module, theRefsObject )
 ```
 
-Solution model
+Solution model - Pseudocode - (Untested)
 ```javascript
 function exportsToContext() {
-var alen = arguments
-for (var a = 0; a < alen; a++) {
-this.exports[el] = arguments[a]);
-});
+  var alen = arguments
+  for (var a = 0; a < alen; a++) {
+    this.exports[el] = arguments[a]);
+  });
 }
  
 var foo = 1, bar = 2, zoo = function() { return "z" };
- 
+   
 function export( argArr ) {
-exportsToContext.apply( module, [this].join( argArr) );
+  exportsToContext.apply( module, [this].join( argArr) );
 }
 ```
