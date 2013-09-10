@@ -73,6 +73,12 @@ app.configure( function() {
 - Must implement `passport.serializeUser( function( user, done) {})` and `passport.deserializeUser( function( id, done) {})`
 - in the argument function have `user` to userId-hsh and `userId` to `user`-obj logic of the app.
 
+- todo:
+  - where is session data stored? 
+  - what data is stored?
+  - cookie only? 
+  - using passport with session store such as redis or leveldb?
+
 ### Using OAuth 2.0
 - First get authorization details from your provider: f.ex. authorization & access token -urls, plus client ID & secret.
 
