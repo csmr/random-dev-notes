@@ -2,28 +2,28 @@
 set backup
 set writebackup
 " backup files dir
-set backupdir=~/_doxxx/backups 
+set backupdir=~/_doxxx/backups
 " swap file dir
 set directory=~/_doxxx/backups
 " timestamp-extension to backups
 au BufWritePre * let &bex = '-' . strftime("%Y%m%d%H%M") . '.backup'
 
 " folding
-filetype plugin indent on 
+filetype plugin indent on
 set foldmethod=indent " fold by indentation
 
 " look-and-feel
-colorscheme murphy " def colors
+colorscheme elflord " def colors
 set cursorline
 
 " always status line
 set ls=2
-set statusline=%<%f\ " Filename                                                                                    
-set statusline+=\ [%{getcwd()}] " Current dir                                                                      
-set statusline+=%w%h%m%r " Options                                                                                 
-set statusline+=\ [%{&ff}/%Y] " Filetype                                                                           
-set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of                                             
-set statusline+=[tabs=%{&ts}]                                                                                      
+set statusline=%1*\ %n\ %* " Buffer N
+set statusline+=%<%f\ " Filename
+"  set statusline+=\ [%{getcwd()}] " Current dir
+set statusline+=%w%h%m%r " Options
+set statusline+=\‧\ %{&ff}\‧%{&fenc}\‧%Y\ " Filetype
+set statusline+=\‧\ ts=%{&ts}
 set statusline+=%=%-14.(line:%l,col:%c%V%)\ %p%% " Right aligned file nav
 
 "set guifont=* " font selector on startup
