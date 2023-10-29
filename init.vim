@@ -13,17 +13,18 @@ filetype plugin indent on
 set foldmethod=indent " fold by indentation
 
 " look-and-feel
-colorscheme murphy " def colors
+colorscheme torte " def colors
 set cursorline
 
-" always status line
+" minimalist status
+" [bufn][modified][ filepath ][writable|help|ro][ff/fenc/ft][ts][line/col]
 set ls=2
-set statusline=\ \%n\%4.4m\ " Buffer N
-set statusline+=%1*\ %<%f\ %* " Filename
-set statusline+=%w%h%r\ " Options
-set statusline+=\‧\ %{&ff}\‧%{&fenc}\‧%Y\ " Filetype
-set statusline+=\‧\ ts=%{&ts}
-set statusline+=%=%-14.(line:%l,col:%c%V%)\ %p%% " Right aligned file nav
+set statusline=\ \%n\%4.4m
+set statusline+=\ %1*\ %<%f\ %*
+set statusline+=\ %w%h%r
+set statusline+=\ \‧\ %{&ff}\‧%{&fenc}\‧%Y " format/enc/type
+set statusline+=\ \‧\ ts=%{&ts}
+set statusline+=\ \‧\ %(l%l\ c%c%V%)
 
 " hide toolbar, menubar and use text-tabs
 set guifont=Consolas:h11
