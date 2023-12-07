@@ -18,13 +18,17 @@ set cursorline
 
 " minimalist status
 " [bufn][modified][ filepath ][writable|help|ro][ff/fenc/ft][ts][col]
-set ls=2 
-set statusline=\ \%n\ \%1*\%1.3m\%*
-set statusline+=\%#DiffAdd#\ %f\ %*
-set statusline+=\ %w%h%r
-set statusline+=%=%< " truncate following to left
-set statusline+=\ \·\ %{&ff}\·%{&fenc}\·\%Y " format/enc/type
-set statusline+=\ \·\ \ts=%{&ts}
+set ls=3 " one status only                                                                                                  
+hi WinSeparator guibg=none " win border line                                                                                
+" dim statusline fg color                                                                                                   
+hi def StatusLineCsmr guifg=LightGray guibg=Blue ctermfg=LightGray ctermbg=Blue                                             
+hi link StatusLine StatusLineCsmr                                                                                           
+set statusline=\ \%n\ \%1*\%1.3m\%*                                                                                         
+set statusline+=\%#DiffAdd#\ %f\ %*                                                                                         
+set statusline+=\ %w%h%r                                                                                                    
+set statusline+=\%=%< " truncate following to left                                                                          
+set statusline+=\ %#StatusLineCsmr#\·\ %{&ff}\·%{&fenc}\·\%Y " format/enc/type                                              
+set statusline+=\ \·\ \ts=%{&ts}                                                                                            
 set statusline+=\ \·\ \%(col\ %c%V%)\ 
 
 " hide toolbar, menubar and use text-tabs
