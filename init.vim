@@ -15,21 +15,20 @@ set foldmethod=indent " fold by indentation
 " look-and-feel
 colorscheme torte " def colors
 set cursorline
-
-" minimalist status
+" minimalist statusline
 " [bufn][modified][ filepath ][writable|help|ro][ff/fenc/ft][ts][col]
-set ls=3 " one status only                                                                                                  
-hi WinSeparator guibg=none " win border line                                                                                
-" dim statusline fg color                                                                                                   
-hi def StatusLineCsmr guifg=LightGray guibg=Blue ctermfg=LightGray ctermbg=Blue                                             
-hi link StatusLine StatusLineCsmr                                                                                           
-set statusline=\ \%n\ \%1*\%1.3m\%*                                                                                         
-set statusline+=\%#DiffAdd#\ %f\ %*                                                                                         
-set statusline+=\ %w%h%r                                                                                                    
-set statusline+=\%=%< " truncate following to left                                                                          
-set statusline+=\ %#StatusLineCsmr#\·\ %{&ff}\·%{&fenc}\·\%Y " format/enc/type                                              
-set statusline+=\ \·\ \ts=%{&ts}                                                                                            
-set statusline+=\ \·\ \%(col\ %c%V%)\ 
+set ls=3 " one status only
+hi WinSeparator guibg=none " win border line
+" dim statusline fg color
+hi def StatusLineCsmr guifg=LightGray guibg=gray13 ctermfg=LightGray ctermbg=gray
+hi link StatusLine StatusLineCsmr 
+set statusline=\ \%n\ \%1*\%1.3m\%*
+set statusline+=\%#DiffAdd#\ %f\ %*
+set statusline+=\ %w%h%r
+set statusline+=\%=%< " truncate following to left
+set statusline+=\ %#StatusLineCsmr#\·\ %{&ff}\·%{&fenc}\·\%Y " format/enc/type
+set statusline+=\ \·\ \ts=%{&ts}
+set statusline+=\ \·\ col\ \%{printf('%3d',col('.'))}\ 
 
 " hide toolbar, menubar and use text-tabs
 set guifont=Consolas:h11
